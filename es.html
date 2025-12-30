@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcancía Group - INNOVACIÓN, SOLIDEZ FINANCIERA Y EXCELENCIA OPERATIVA</title>
+    <link rel="icon" type="image/png" href="media/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #87d2ff;
+            --card-blue: #baddff;
+            --dark-text: #000000;
+            --light-text: #ffffff;
+            --dark-bg: #000000;
+            --section-bg: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        header {
+            background-color: var(--primary-blue);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-logo {
+            height: 60px;
+            width: auto;
+        }
+        
+        .logo-placeholder {
+            height: 60px;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light-text);
+        }
+        
+        .language-selector {
+            background-color: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .language-selector:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .language-selector span {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .language-icon {
+            font-size: 18px;
+        }
+        
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+        
+        .hamburger-menu span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark-text);
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 90px;
+            right: -100%;
+            width: 100%;
+            height: calc(100vh - 90px);
+            background-color: var(--primary-blue);
+            z-index: 999;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            gap: 30px;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            list-style: none;
+            text-align: center;
+        }
+        
+        .mobile-menu-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu-links a:hover {
+            color: var(--light-text);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('media/Main.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light-text);
+            padding: 0 20px;
+            margin-top: 90px;
+        }
+        
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            line-height: 1.2;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+        }
+        
+        .hero h2 {
+            font-size: 56px;
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+        }
+        
+        .hero p {
+            font-size: 36px;
+            max-width: 1100px;
+            line-height: 1.4;
+        }
+        
+        .about-section {
+            padding: 100px 40px;
+            background-color: var(--section-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .about-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .stats-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .stats-image {
+            width: 100%;
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            background-image: url('media/Global presence.avif');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            width: 100%;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .parallelogram-container {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .parallelogram {
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-bg);
+            transform: skewX(-10deg);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .parallelogram-content {
+            position: relative;
+            z-index: 2;
+            color: var(--light-text);
+            padding: 60px;
+            transform: skewX(10deg);
+            max-width: 90%;
+        }
+        
+        .parallelogram-content h3 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .parallelogram-content p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+        
+        .parallelogram-content strong {
+            color: var(--primary-blue);
+        }
+        
+        .brands-section {
+            padding: 100px 40px;
+            color: var(--light-text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brands-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        
+        .brands-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+        
+        .brands-header {
+            text-align: center;
+            max-width: 1200px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .brands-header h2 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+        }
+        
+        .brands-header p {
+            font-size: 20px;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .brands-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .brand-card {
+            background-color: var(--card-blue);
+            border-radius: 16px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            color: var(--dark-text);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brand-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.4) 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .brand-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .brand-card.middle {
+            opacity: 0.95;
+        }
+        
+        .brand-card:not(.middle) {
+            opacity: 0.95;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px; 
+            margin-bottom: 30px; 
+        }
+        
+        .card-logo {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .octo-logo {
+            height: 140px; 
+            width: auto;
+        }
+        
+        .zimpy-logo {
+            height: 60px; 
+            width: auto;
+        }
+        
+        .sabra-logo {
+            height: 80px;
+            width: auto;
+        }
+        
+        .text-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .brand-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+            text-align: left;
+        }
+        
+        .brand-card h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .brand-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+        
+        .brand-card li {
+            font-size: 16px;
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+            line-height: 1.4;
+            text-align: left;
+        }
+        
+        .brand-card li:before {
+            content: "•";
+            color: #000000; 
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: -4px;
+        }
+        
+        .brand-card strong {
+            color: #000;
+            font-weight: 700;
+        }
+        
+        .country-image {
+            width: 100%;
+            height: 120px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            object-fit: contain;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+        }
+        
+        .sabra-flags {
+            object-fit: contain;
+            padding: 5px;
+        }
+        
+        .cta-button {
+            background-color: var(--primary-blue);
+            color: var(--dark-text);
+            border: none;
+            border-radius: 30px;
+            padding: 15px 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-button:hover {
+            background-color: #6bc5ff;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            background-color: #222;
+            color: var(--light-text);
+            padding: 60px 40px 40px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-content h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .contact-email {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+        
+        .copyright {
+            font-size: 16px;
+            color: #aaa;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 50px;
+            }
+            
+            .hero h2 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 30px;
+            }
+            
+            .brands-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .brand-card.middle {
+                grid-column: span 2;
+                max-width: 80%;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .parallelogram-container {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero h2 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 26px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .nav-links a {
+                font-size: 16px;
+            }
+            
+            .logo-container {
+                height: 130px;
+                margin-bottom: 25px;
+            }
+            
+            .octo-logo {
+                height: 120px;
+            }
+            
+            .zimpy-logo {
+                height: 50px;
+            }
+            
+            .sabra-logo {
+                height: 70px;
+            }
+            
+            .country-image {
+                height: 100px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            
+            .hamburger-menu {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .language-selector {
+                margin-left: auto;
+                margin-right: 20px;
+            }
+            
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 100px 20px 60px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 22px;
+            }
+            
+            .about-section, .brands-section {
+                padding: 60px 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .brands-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .brand-card.middle {
+                grid-column: auto;
+                max-width: 100%;
+            }
+            
+            .parallelogram-container {
+                height: 500px; 
+            }
+            
+            .parallelogram-content {
+                padding: 30px;
+                margin-left: 5px
+            }
+            
+            .parallelogram-content h3 {
+                font-size: 28px;
+            }
+            
+            .parallelogram-content p {
+                font-size: 16px;
+                line-height: 1.7; 
+            }
+            
+            .brands-video-bg {
+                display: none;
+            }
+            
+            .brands-section {
+                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('media/background video.mp4');
+                background-size: cover;
+                background-position: center;
+            }
+            
+            .logo-container {
+                height: 110px;
+                margin-bottom: 20px;
+            }
+            
+            .octo-logo {
+                height: 100px;
+            }
+            
+            .zimpy-logo {
+                height: 45px;
+            }
+            
+            .sabra-logo {
+                height: 60px;
+            }
+            
+            .country-image {
+                height: 90px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero h2 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 20px;
+            }
+            
+            .brands-header h2 {
+                font-size: 36px;
+            }
+            
+            .brand-card {
+                padding: 30px 20px;
+            }
+            
+            .parallelogram-container {
+                height: 550px; 
+            }
+            
+            .parallelogram-content h3 {
+                font-size: 24px;
+                Margin-left:7px;
+            }
+            
+            .parallelogram-content p {
+                font-size: 16px;
+            }
+            
+            .logo-container {
+                height: 100px;
+                margin-bottom: 15px;
+            }
+            
+            .octo-logo {
+                height: 90px;
+            }
+            
+            .zimpy-logo {
+                height: 40px;
+            }
+            
+            .sabra-logo {
+                height: 55px;
+            }
+            
+            .country-image {
+                height: 80px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .parallelogram-container {
+                height: 600px; 
+            }
+            
+            .parallelogram-content {
+                padding: 25px;
+                Margin-left:7px;
+            }
+            
+            .parallelogram-content h3 {
+                font-size: 22px;
+                margin-bottom: 20px;
+                Margin-left:7px;
+            }
+            
+            .parallelogram-content p {
+                font-size: 16px;
+            }
+            
+            .logo-container {
+                height: 90px;
+            }
+            
+            .octo-logo {
+                height: 80px;
+            }
+            
+            .zimpy-logo {
+                height: 35px;
+            }
+            
+            .sabra-logo {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="media/ALCANCIA LOGO.png" alt="Alcancía Group" class="header-logo">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">INICIO</a></li>
+                <li><a href="#brands">NUESTRAS MARCAS</a></li>
+                <li><a href="#contact">CONTÁCTENOS</a></li>
+            </ul>
+            <div class="language-selector">
+                <span class="language-icon">🌐</span>
+                <span>ESPAÑOL</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <button class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="#home">INICIO</a></li>
+            <li><a href="#brands">NUESTRAS MARCAS</a></li>
+            <li><a href="#contact">CONTÁCTENOS</a></li>
+        </ul>
+    </div>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>INNOVACIÓN, FORTALEZA FINANCIERA Y EXCELENCIA OPERATIVA.</h1>
+            <h2>¿QUIÉNES SOMOS?</h2>
+            <p>ALCANCÍA GROUP es el ecosistema multinacional que orquesta Inteligencia Artificial, Fintech y Servicios Operativos para grandes corporaciones en América y Europa.</p>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <div class="stats-container">
+                <div class="stats-image"></div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-text">años de experiencia</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-text">marcas especializadas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">6</div>
+                        <div class="stat-text">países operativos</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="parallelogram-container">
+                <div class="parallelogram"></div>
+                <div class="parallelogram-content">
+                    <h3>ESPECIALIZADOS EN ENTREGAR RESULTADOS MEDIBLES</h3>
+                    <p>Con más de <strong>25 años de experiencia tecnológica</strong> y liderazgo financiero, integramos emprendimientos especializados para resolver desafíos complejos. Nuestra presencia abarca México, España, Estados Unidos, Venezuela, Panamá y República Dominicana.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="brands" class="brands-section">
+        <video autoplay muted loop playsinline class="brands-video-bg">
+            <source src="media/background video.mp4" type="video/mp4">
+            Su navegador no soporta el elemento de video.
+        </video>
+        <div class="brands-overlay"></div>
+        
+        <div class="brands-header">
+            <h2>Nuestras Marcas</h2>
+            <p>Alcancía Group está formado por tres divisiones que innovan en telecomunicaciones, tecnología financiera y Gestión Empresarial: Octolytics, Zimpy y Sabra, cada una con un enfoque claro.</p>
+        </div>
+        
+        <div class="brands-cards">
+            <div class="brand-card">
+                <div class="logo-container">
+                    <img src="media/Logo-OCTOCX.png" alt="Octolytics" class="card-logo octo-logo">
+                </div>
+                <div class="text-content">
+                    <h3>Pioneros en IA Agéntica para Telecomunicaciones. Entregamos mejoras en CX y ROI desde el primer día.</h3>
+                    <h4>Soluciones especializadas para MNOs y MVNOs (Operadores Móviles).</h4>
+                    <ul>
+                        <li><strong>Reducción Sostenida de Churn:</strong> 14% a 16%.</li>
+                        <li><strong>Optimización de OpEx:</strong> 25% a 30%.</li>
+                        <li><strong>Impulso de Eficiencia Operativa:</strong> 30% a 35%.</li>
+                        <li><strong>Crecimiento en CX (NPS & CSAT):</strong> mejora del 15% al 20%.</li>
+                    </ul>
+                </div>
+                <img src="media/Países octo.png" alt="Octolytics Countries" class="country-image">
+                <a href="mailto:info@alcancia.biz?subject=Solicitud de información.&body=Hola, me gustaría obtener más información sobre su marca OctoCX." class="cta-button">Más información</a>
+            </div>
+            
+            <div class="brand-card middle">
+                <div class="logo-container">
+                    <img src="media/Logo Zimpy.png" alt="Zimpy" class="card-logo zimpy-logo">
+                </div>
+                <div class="text-content">
+                    <h3>Plataforma Fintech SaaS de Marca Blanca para Crédito & BNPL.</h3>
+                    <h4>Convierte el BNPL tradicional en un Centro de Beneficios.</h4>
+                    <ul>
+                        <li><strong>+8.5%</strong> Impulso en beneficios.</li>
+                        <li><strong>+20-30%</strong> Tasa de nuevos clientes.</li>
+                        <li><strong>+25-35%</strong> Valor Promedio de Pedido (AOV).</li>
+                        <li><strong>+35-45%</strong> Puntuación de Satisfacción del Cliente.</li>
+                        <li><strong>Tecnología de IA Agéntica</strong> para scoring de riesgo y cobranzas.</li>
+                        <li><strong>Ecosistema de Valor:</strong> crédito instantáneo + Seguros Integrados bajo <strong>tu marca.</strong></li>
+                    </ul>
+                </div>
+                <img src="media/Países zimpy.png" alt="Zimpy Countries" class="country-image">
+                <a href="https://zimpy.biz" target="_blank" class="cta-button">Más información</a>
+            </div>
+            
+            <div class="brand-card">
+                <div class="logo-container">
+                    <img src="media/Sabra logo.png" alt="Sabra Corp" class="card-logo sabra-logo">
+                </div>
+                <div class="text-content">
+                    <h3>Orquestador de Soluciones y Servicios Operativos.</h3>
+                    <h4>División multidisciplinaria líder en Soluciones Operativas</h4>
+                    <ul>
+                        <li><strong>Facility Management</strong> integral.</li>
+                        <li><strong>Mantenimiento</strong> de infraestructura crítica y equipos.</li>
+                        <li>Planificación de eventos corporativos y <strong>logística a gran escala.</strong></li>
+                    </ul>
+                </div>
+                <img src="media/Países Sabra.png" alt="Sabra Countries" class="country-image sabra-flags">
+                <a href="https://corpsabra.com/en" target="_blank" class="cta-button">Más información</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Contáctenos</h3>
+            <p class="contact-email">info@alcancia.biz</p>
+            <p class="copyright">© 2025 Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 90,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                closeMobileMenu();
+            });
+        });
+        
+document.querySelectorAll('.language-selector').forEach(selector => {
+    selector.addEventListener('click', function() {
+        window.location.href = 'index.html';
+    });
+});
+        
+        if (window.innerWidth <= 768) {
+            const video = document.querySelector('.brands-video-bg');
+            if (video) {
+                video.style.display = 'none';
+            }
+        }
+        
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        function toggleMobileMenu() {
+            hamburgerMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        }
+        
+        function closeMobileMenu() {
+            hamburgerMenu.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+        
+        hamburgerMenu.addEventListener('click', toggleMobileMenu);
+        
+        document.addEventListener('click', function(event) {
+            if (!hamburgerMenu.contains(event.target) && !mobileMenu.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
+        
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
