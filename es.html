@@ -114,7 +114,17 @@
         .language-icon {
             font-size: 18px;
         }
-        
+        .mobile-language-selector {
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 12px 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            cursor: pointer;
+}
+
         .hamburger-menu {
             display: none;
             flex-direction: column;
@@ -638,20 +648,13 @@
             header {
                 padding: 15px 20px;
             }
-            
+            .nav-links, .language-selector {
+                display: none !important;
+            }
             .hamburger-menu {
                 display: flex;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .language-selector {
                 margin-left: auto;
-                margin-right: 20px;
             }
-            
             .hero {
                 height: auto;
                 min-height: 100vh;
@@ -856,6 +859,11 @@
             <li><a href="#home">INICIO</a></li>
             <li><a href="#brands">NUESTRAS MARCAS</a></li>
             <li><a href="#contact">CONTÁCTENOS</a></li>
+            <li>
+          <button class="mobile-language-selector" type="button">
+            🌐 ESPAÑOL <i class="fas fa-chevron-right"></i>
+          </button>
+        </li>
         </ul>
     </div>
 
@@ -906,7 +914,7 @@
         
         <div class="brands-header">
             <h2>Nuestras Marcas</h2>
-            <p>Alcancía Group está formado por tres divisiones que innovan en telecomunicaciones, tecnología financiera y Gestión Empresarial: Octolytics, Zimpy y Sabra, cada una con un enfoque claro.</p>
+            <p>Alcancía Group está formado por tres marcas que innovan en telecomunicaciones, tecnología financiera y Gestión Empresarial: OctoCX, Zimpy y Sabra, cada una con un enfoque claro.</p>
         </div>
         
         <div class="brands-cards">
@@ -924,7 +932,7 @@
                         <li><strong>Crecimiento en CX (NPS & CSAT):</strong> mejora del 15% al 20%.</li>
                     </ul>
                 </div>
-                <a href="https://octolytics.com" target="_blank" class="cta-button">Más información</a>
+                <a href="https://octolytics.com/es/inicio/" target="_blank" class="cta-button">Más información</a>
             </div>
             
             <div class="brand-card middle">
@@ -952,14 +960,14 @@
                 </div>
                 <div class="text-content">
                     <h3>Orquestador de Soluciones y Servicios Operativos.</h3>
-                    <h4>División multidisciplinaria líder en Soluciones Operativas</h4>
+                    <h4>Empresa multidisciplinaria líder en Soluciones Operativas</h4>
                     <ul>
                         <li><strong>Facility Management</strong> integral.</li>
                         <li><strong>Mantenimiento</strong> de infraestructura crítica y equipos.</li>
                         <li>Planificación de eventos corporativos y <strong>logística a gran escala.</strong></li>
                     </ul>
                 </div>
-                <a href="https://corpsabra.com/en" target="_blank" class="cta-button">Más información</a>
+                <a href="https://corpsabra.com" target="_blank" class="cta-button">Más información</a>
             </div>
         </div>
     </section>
@@ -992,7 +1000,7 @@
             });
         });
         
-document.querySelectorAll('.language-selector').forEach(selector => {
+document.querySelectorAll('.language-selector, .mobile-language-selector').forEach(selector => {
     selector.addEventListener('click', function() {
         window.location.href = 'index.html';
     });
