@@ -114,7 +114,16 @@
         .language-icon {
             font-size: 18px;
         }
-        
+        .mobile-language-selector {
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 12px 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            cursor: pointer;
+}
         .hamburger-menu {
             display: none;
             flex-direction: column;
@@ -639,19 +648,13 @@
                 padding: 15px 20px;
             }
             
+            .nav-links, .language-selector {
+                display: none !important;
+            }
             .hamburger-menu {
                 display: flex;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .language-selector {
                 margin-left: auto;
-                margin-right: 20px;
             }
-            
             .hero {
                 height: auto;
                 min-height: 100vh;
@@ -856,6 +859,11 @@
             <li><a href="#home">HOME</a></li>
             <li><a href="#brands">OUR BRANDS</a></li>
             <li><a href="#contact">CONTACT US</a></li>
+            <li>
+          <button class="mobile-language-selector" type="button">
+            🌐 ENGLISH <i class="fas fa-chevron-right"></i>
+          </button>
+           </li>
         </ul>
     </div>
 
@@ -906,7 +914,7 @@
         
         <div class="brands-header">
             <h2>Our Brands</h2>
-            <p>Alcancía Group is formed by three divisions that innovate in telecommunications, financial technology and Business Management: Octolytics, Zimpy and Sabra, each one with a clear focus.</p>
+            <p>Alcancía Group is formed by three brands that innovate in telecommunications, financial technology and Business Management: OctoCX, Zimpy and Sabra, each one with a clear focus.</p>
         </div>
         
         <div class="brands-cards">
@@ -943,7 +951,7 @@
                         <li><strong>Value Ecosystem:</strong> Instant credit + Embedded Insurance under <strong>your brand.</strong></li>
                     </ul>
                 </div>
-                <a href="https://zimpy.biz" target="_blank" class="cta-button">More info</a>
+                <a href="https://zimpy.biz/en/zimpy/" target="_blank" class="cta-button">More info</a>
             </div>
             
             <div class="brand-card">
@@ -952,7 +960,7 @@
                 </div>
                 <div class="text-content">
                     <h3>Orchestrator of Operational Solutions & Services.</h3>
-                    <h4>Multidisciplinary division leading Operational Solutions</h4>
+                    <h4>Multidisciplinary company leading Operational Solutions</h4>
                     <ul>
                         <li>Comprehensive <strong>Facility Management.</strong></li>
                         <li>Critical infrastructure and equipment <strong>maintenance.</strong></li>
@@ -992,7 +1000,7 @@
             });
         });
         
-        document.querySelectorAll('.language-selector').forEach(selector => {
+        document.querySelectorAll('.language-selector, .mobile-language-selector').forEach(selector => {
             selector.addEventListener('click', function() {
                 window.location.href = 'es.html';
             });
