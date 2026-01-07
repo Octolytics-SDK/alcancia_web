@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OctoCX Portfolio - Alcancía Group</title>
+    <link rel="icon" type="image/png" href="media/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <style>
+        :root {
+            --primary-blue: #6ab5e0;
+            --dark-text: #000000;
+            --light-text: #ffffff;
+            --dark-bg: #2a2a2a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: var(--primary-blue);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-logo {
+            height: 60px;
+            width: auto;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        
+        .header-logo:hover {
+            opacity: 0.8;
+        }
+        
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header-btn {
+            background-color: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 8px 16px;
+            color: var(--dark-text);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 40px;
+        }
+        
+        .header-btn:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .language-icon {
+            font-size: 18px;
+        }
+        
+        .lang-short {
+            display: none;
+        }
+        
+        .pdf-container {
+            padding: 100px 20px 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .pdf-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 12px 24px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .pdf-controls button {
+            background: var(--primary-blue);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            color: var(--dark-text);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pdf-controls button:hover {
+            opacity: 0.8;
+        }
+        
+        .page-info {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .pdf-page {
+            background: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .pdf-page canvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 60px;
+            min-height: 50vh;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 15px;
+            }
+            
+            .header-logo {
+                height: 45px;
+            }
+            
+            .header-btn span {
+                display: none;
+            }
+            
+            .header-btn .lang-short {
+                display: inline;
+            }
+            
+            .pdf-controls {
+                bottom: 20px;
+                padding: 10px 16px;
+                gap: 10px;
+            }
+            
+            .pdf-controls button {
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a id="home-link" href="preview-alcancia.html">
+            <img src="media/ALCANCIA LOGO.png" alt="Alcancía Group" class="header-logo">
+        </a>
+        <div class="header-controls">
+            <a id="download-link" class="header-btn" download>
+                <i class="fas fa-download"></i>
+                <span id="download-text">Download</span>
+            </a>
+            <button id="lang-btn" class="header-btn">
+                <span class="language-icon">🌐</span>
+                <span id="lang-text">ENGLISH</span>
+                <span id="lang-short" class="lang-short">EN</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="pdf-container" id="pdf-container">
+        <div id="loading" class="loading">
+            <div class="loading-spinner"></div>
+            <p id="loading-text">Loading document...</p>
+        </div>
+    </div>
+    
+    <div class="pdf-controls">
+        <button id="zoom-out"><i class="fas fa-minus"></i></button>
+        <span id="zoom-level">80%</span>
+        <button id="zoom-in"><i class="fas fa-plus"></i></button>
+        <span class="page-info"><span id="page-count">-</span> <span id="pages-text">pages</span></span>
+    </div>
+
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        let lang = urlParams.get('lang') || 'en';
+        
+        const translations = {
+            en: {
+                download: 'Download',
+                loading: 'Loading document...',
+                pages: 'pages',
+                langSwitch: 'ENGLISH',
+                langShort: 'EN',
+                pdfFile: 'docs/OCTOCX Portfolio_eng.pdf',
+                homePage: 'preview-alcancia.html'
+            },
+            es: {
+                download: 'Descargar',
+                loading: 'Cargando documento...',
+                pages: 'páginas',
+                langSwitch: 'ESPAÑOL',
+                langShort: 'ES',
+                pdfFile: 'docs/OCTOCX Portfolio_esp.pdf',
+                homePage: 'preview-alcancia-es.html'
+            }
+        };
+        
+        function applyTranslations() {
+            const t = translations[lang];
+            document.getElementById('download-text').textContent = t.download;
+            document.getElementById('loading-text').textContent = t.loading;
+            document.getElementById('pages-text').textContent = t.pages;
+            document.getElementById('lang-text').textContent = t.langSwitch;
+            document.getElementById('lang-short').textContent = t.langShort;
+            document.getElementById('download-link').href = t.pdfFile;
+            document.getElementById('home-link').href = t.homePage;
+        }
+        
+        applyTranslations();
+        
+        let pdfFile = translations[lang].pdfFile;
+        let pdfDoc = null;
+        let scale = 1.2;
+        const container = document.getElementById('pdf-container');
+        
+        async function renderAllPages() {
+            for (let i = 1; i <= pdfDoc.numPages; i++) {
+                const page = await pdfDoc.getPage(i);
+                const viewport = page.getViewport({ scale });
+                
+                const pageDiv = document.createElement('div');
+                pageDiv.className = 'pdf-page';
+                pageDiv.id = `page-${i}`;
+                
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                
+                pageDiv.appendChild(canvas);
+                container.appendChild(pageDiv);
+                
+                await page.render({
+                    canvasContext: ctx,
+                    viewport: viewport
+                }).promise;
+            }
+        }
+        
+        async function reRenderAllPages() {
+            const pages = container.querySelectorAll('.pdf-page');
+            pages.forEach(page => page.remove());
+            await renderAllPages();
+        }
+        
+        async function loadPDF() {
+            try {
+                pdfDoc = await pdfjsLib.getDocument(pdfFile).promise;
+                document.getElementById('page-count').textContent = pdfDoc.numPages;
+                document.getElementById('loading').style.display = 'none';
+                await renderAllPages();
+            } catch (error) {
+                document.getElementById('loading').innerHTML = `
+                    <i class="fas fa-exclamation-triangle" style="font-size: 48px; color: #ff6b6b;"></i>
+                    <p>Error loading document</p>
+                `;
+            }
+        }
+        
+        document.getElementById('zoom-in').addEventListener('click', () => {
+            scale = Math.min(scale + 0.25, 3);
+            document.getElementById('zoom-level').textContent = Math.round(scale * 100 / 1.5) + '%';
+            reRenderAllPages();
+        });
+        
+        document.getElementById('zoom-out').addEventListener('click', () => {
+            scale = Math.max(scale - 0.25, 0.5);
+            document.getElementById('zoom-level').textContent = Math.round(scale * 100 / 1.5) + '%';
+            reRenderAllPages();
+        });
+        
+        document.getElementById('lang-btn').addEventListener('click', () => {
+            const newLang = lang === 'en' ? 'es' : 'en';
+            window.location.href = `octocx-portfolio.html?lang=${newLang}`;
+        });
+        
+        loadPDF();
+    </script>
+</body>
+</html>
