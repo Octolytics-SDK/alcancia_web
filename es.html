@@ -32,7 +32,7 @@
         
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
+            font-weight: 500;
         }
         
         header {
@@ -124,7 +124,6 @@
             font-size: 20px;
             cursor: pointer;
 }
-
         .hamburger-menu {
             display: none;
             flex-direction: column;
@@ -449,6 +448,14 @@
             object-fit: contain;
         }
         
+        .card-intro {
+        min-height: 240px;
+        }
+        
+        .card-key-title {
+        margin-top: 10px;
+        }
+
         .octo-logo {
             height: 80px; 
             width: auto;
@@ -471,7 +478,7 @@
         }
         
         .brand-card h3 {
-            font-size: 20px;
+            font-size: 22px;
             margin-bottom: 15px;
             line-height: 1.3;
             text-align: left;
@@ -648,6 +655,7 @@
             header {
                 padding: 15px 20px;
             }
+            
             .nav-links, .language-selector {
                 display: none !important;
             }
@@ -869,9 +877,9 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>INNOVACIÓN, FORTALEZA FINANCIERA Y EXCELENCIA OPERATIVA.</h1>
-            <h2>¿QUIÉNES SOMOS?</h2>
-            <p>ALCANCÍA GROUP es el ecosistema multinacional que orquesta Inteligencia Artificial, Fintech y Servicios Operativos para grandes corporaciones en América y Europa.</p>
+            <h1><strong>INNOVACIÓN, FORTALEZA FINANCIERA Y EXCELENCIA OPERATIVA.</strong></h1>
+            <h2><strong>¿QUIÉNES SOMOS?</strong></h2>
+            <p>ALCANCÍA GROUP es el ecosistema multinacional que orquesta Inteligencia Artificial, Fintech y Servicios Operativos para corporaciones alrededor del mundo.</p>
         </div>
     </section>
 
@@ -882,15 +890,15 @@
                 <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-number">25+</div>
-                        <div class="stat-text">años de experiencia</div>
+                        <div class="stat-text">Años de experiencia</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">3</div>
-                        <div class="stat-text">marcas especializadas</div>
+                        <div class="stat-text">Marcas especializadas</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">6</div>
-                        <div class="stat-text">países operativos</div>
+                        <div class="stat-text">Países operativos</div>
                     </div>
                 </div>
             </div>
@@ -898,7 +906,7 @@
             <div class="parallelogram-container">
                 <div class="parallelogram"></div>
                 <div class="parallelogram-content">
-                    <h3>ESPECIALIZADOS EN ENTREGAR RESULTADOS MEDIBLES</h3>
+                    <h3><strong>ESPECIALIZADOS EN ENTREGAR RESULTADOS MEDIBLES</strong></h3>
                     <p>Con más de <strong>25 años de experiencia tecnológica</strong> y liderazgo financiero, integramos emprendimientos especializados para resolver desafíos complejos. Nuestra presencia abarca México, España, Estados Unidos, Venezuela, Panamá y República Dominicana.</p>
                 </div>
             </div>
@@ -913,7 +921,7 @@
         <div class="brands-overlay"></div>
         
         <div class="brands-header">
-            <h2>Nuestras Marcas</h2>
+            <h2><strong>Nuestras Marcas</strong></h2>
             <p>Alcancía Group está formado por tres marcas que innovan en telecomunicaciones, tecnología financiera y Gestión Empresarial: OctoCX, Zimpy y Sabra, cada una con un enfoque claro.</p>
         </div>
         
@@ -923,13 +931,17 @@
                     <img src="media/Logo-OCTOCX.png" alt="Octolytics" class="card-logo octo-logo">
                 </div>
                 <div class="text-content">
-                    <h3>Pioneros en IA Agéntica para Telecomunicaciones. Entregamos mejoras en CX y ROI desde el primer día.</h3>
-                    <h4>Soluciones especializadas para MNOs y MVNOs (Operadores Móviles).</h4>
+                  <div class="card-intro">
+                    <h3><strong>Pioneros en IA Agéntica para Telecomunicaciones</strong></h3>
+                    <h4>Resultados probados en CX y ROI para MNOs y MVNOs desde el primer día.</h4>
+                  </div>
+                  
+                    <h4 class="card-key-title"><strong>Métricas Clave y Beneficios:</strong></h4>
                     <ul>
-                        <li><strong>Reducción Sostenida de Churn:</strong> 14% a 16%.</li>
-                        <li><strong>Optimización de OpEx:</strong> 25% a 30%.</li>
-                        <li><strong>Impulso de Eficiencia Operativa:</strong> 30% a 35%.</li>
-                        <li><strong>Crecimiento en CX (NPS & CSAT):</strong> mejora del 15% al 20%.</li>
+                        <li><strong>14% - 16% Reducción de Churn:</strong> Retén más suscriptores sin esfuerzo.</li>
+                        <li><strong>25% - 30% Ahorro en OpEx:</strong> Optimiza costos operativos al instante.</li>
+                        <li><strong>30% - 35% Aumento de Eficiencia:</strong> Agiliza flujos de trabajo y reduce interacciones al contact center mediante agentes de IA.</li>
+                        <li><strong>15% - 20% Mejora en CX:</strong> Eleva tus puntajes de NPS y CSAT.</li>
                     </ul>
                 </div>
                 <a href="https://octolytics.com/es/inicio/" target="_blank" class="cta-button">Más información</a>
@@ -940,15 +952,18 @@
                     <img src="media/Logo Zimpy.png" alt="Zimpy" class="card-logo zimpy-logo">
                 </div>
                 <div class="text-content">
-                    <h3>Plataforma Fintech SaaS de Marca Blanca para Crédito & BNPL.</h3>
-                    <h4>Convierte el BNPL tradicional en un Centro de Beneficios.</h4>
+                  <div class="card-intro">
+                    <h3><strong>Plataforma Fintech SaaS de Marca Blanca para Crédito & BNPL</strong></h3>
+                    <h4>Transforma el BNPL (Compra ahora, paga después) en un centro de utilidades bajo tu propia marca.</h4>
+                  </div>
+                  
+                    <h4 class="card-key-title"><strong>Métricas Clave y Beneficios:</strong></h4>
                     <ul>
-                        <li><strong>+8.5%</strong> Impulso en beneficios.</li>
-                        <li><strong>+20-30%</strong> Tasa de nuevos clientes.</li>
-                        <li><strong>+25-35%</strong> Valor Promedio de Pedido (AOV).</li>
-                        <li><strong>+35-45%</strong> Puntuación de Satisfacción del Cliente.</li>
-                        <li><strong>Tecnología de IA Agéntica</strong> para scoring de riesgo y cobranzas.</li>
-                        <li><strong>Ecosistema de Valor:</strong> crédito instantáneo + Seguros Integrados bajo <strong>tu marca.</strong></li>
+                        <li><strong>8 - 10% Rentabilidad Adicional:</strong> Convierte centros de costos en generadores de ingresos.</li>
+                        <li><strong>20% - 30% Tasa de Captación:</strong> Atrae nuevos clientes más rápido.</li>
+                        <li><strong>25% - 35% Mayor Ticket Promedio:</strong> Incrementa el valor de cada orden al instante.</li>
+                        <li><strong>35% - 45% Mejora en Satisfacción del Cliente:</strong> Eleva significativamente los puntajes de satisfacción del cliente.</li>
+                        <li><strong>Scoring con IA Agéntica:</strong> Gestión de riesgo y cobranza más inteligente y segura.</li>
                     </ul>
                 </div>
                 <a href="https://zimpy.biz" target="_blank" class="cta-button">Más información</a>
@@ -959,12 +974,17 @@
                     <img src="media/Sabra logo.png" alt="Sabra Corp" class="card-logo sabra-logo">
                 </div>
                 <div class="text-content">
-                    <h3>Orquestador de Soluciones y Servicios Operativos.</h3>
-                    <h4>Empresa multidisciplinaria líder en Soluciones Operativas</h4>
+                  <div class="card-intro">
+                    <h3><strong>Orquestadores de la Excelencia Operativa</strong></h3>
+                    <h4>Liderazgo multidisciplinario en soluciones integrales para instalaciones corporativas.</h4>
+                  </div>
+                  
+                    <h4 class="card-key-title"><strong>Capacidades Clave:</strong></h4>
                     <ul>
-                        <li><strong>Facility Management</strong> integral.</li>
-                        <li><strong>Mantenimiento</strong> de infraestructura crítica y equipos.</li>
-                        <li>Planificación de eventos corporativos y <strong>logística a gran escala.</strong></li>
+                        <li><strong>Facility Management 360°:</strong> Supervisión total y experta de tus activos.</li>
+                        <li><strong>Continuidad Operativa:</strong>Prioridad en el mantenimiento de infraestructura crítica.</li>
+                        <li><strong>Logística Integral:</strong> Ejecución impecable de eventos corporativos masivos.</li>
+                        <li><strong>100% Control Operativo:</strong> Gestión completa, desde la compra hasta la entrega final.</li>
                     </ul>
                 </div>
                 <a href="https://corpsabra.com" target="_blank" class="cta-button">Más información</a>
