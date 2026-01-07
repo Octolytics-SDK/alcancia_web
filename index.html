@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alcancía Group - Coming Soon</title>
     <link rel="icon" type="image/png" href="media/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #6ab5e0;
-            --dark-bg: #ffffff;
-            --light-text: #333333;
+            --dark-text: #000000;
+            --light-text: #ffffff;
+            --dark-bg: #000000;
         }
         
         * {
@@ -21,122 +23,159 @@
         
         body {
             font-family: 'Open Sans', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--light-text);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+        
+        header {
+            background-color: var(--primary-blue);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-logo {
+            height: 60px;
+            width: auto;
+        }
+        
+        .language-selector {
+            background-color: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .language-selector:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .language-selector span {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .language-icon {
+            font-size: 18px;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('media/Main.png');
+            background-size: cover;
+            background-position: center;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 20px;
+            color: var(--light-text);
+            padding: 0 20px;
+            padding-top: 90px;
         }
         
-        .container {
-            max-width: 800px;
-            width: 100%;
+        .hero-content {
+            max-width: 1000px;
         }
         
-        .logo {
-            max-width: 280px;
-            margin-bottom: 40px;
-        }
-        
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--primary-blue);
-        }
-        
-        p {
-            font-size: 20px;
-            line-height: 1.6;
+        .hero h1 {
+            font-size: 72px;
             margin-bottom: 30px;
-            opacity: 0.9;
+            color: var(--primary-blue);
+            line-height: 1.2;
         }
         
-        .contact {
-            margin-top: 40px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        .hero p {
+            font-size: 24px;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
         
-        .contact p {
-            font-size: 16px;
+        .contact-info {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-info p {
+            font-size: 18px;
             margin-bottom: 10px;
         }
         
-        .contact a {
+        .contact-info a {
             color: var(--primary-blue);
             text-decoration: none;
             font-weight: 600;
+            font-size: 20px;
             transition: opacity 0.3s;
         }
         
-        .contact a:hover {
+        .contact-info a:hover {
             opacity: 0.8;
         }
         
-        .language-switch {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: transparent;
-            border: 1px solid var(--primary-blue);
-            color: var(--primary-blue);
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        
-        .language-switch:hover {
-            background: var(--primary-blue);
-            color: var(--dark-bg);
-        }
-        
         @media (max-width: 768px) {
-            h1 {
-                font-size: 32px;
+            header {
+                padding: 15px 20px;
             }
             
-            p {
-                font-size: 16px;
+            .header-logo {
+                height: 45px;
             }
             
-            .logo {
-                max-width: 200px;
+            .hero h1 {
+                font-size: 42px;
             }
             
-            .language-switch {
-                top: 15px;
-                right: 15px;
-                padding: 8px 16px;
-                font-size: 14px;
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .language-selector span:not(.language-icon) {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <button class="language-switch" onclick="window.location.href='es.html'">ESPAÑOL</button>
-    
-    <div class="container">
-        <img src="media/ALCANCIA LOGO.png" alt="Alcancía Group" class="logo">
-        
-        <h1>Coming Soon</h1>
-        
-        <p>We're working on something amazing. Our new website will be ready soon with all the information about our brands and services.</p>
-        
-        <p>Thank you for your patience!</p>
-        
-        <div class="contact">
-            <p>In the meantime, you can reach us at:</p>
-            <a href="mailto:info@alcancia.biz">info@alcancia.biz</a>
+    <header>
+        <img src="media/ALCANCIA LOGO.png" alt="Alcancía Group" class="header-logo">
+        <div class="language-selector" onclick="window.location.href='es.html'">
+            <span class="language-icon">🌐</span>
+            <span>ENGLISH</span>
+            <i class="fas fa-chevron-down"></i>
         </div>
-    </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Coming Soon</h1>
+            <p>We're working on something amazing. Our new website will be ready soon with all the information about our brands and services.</p>
+            <p>Thank you for your patience!</p>
+            
+            <div class="contact-info">
+                <p>In the meantime, you can reach us at:</p>
+                <a href="mailto:info@alcancia.biz">info@alcancia.biz</a>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
